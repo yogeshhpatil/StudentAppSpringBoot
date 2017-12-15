@@ -1,7 +1,12 @@
 package com.studentApp.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Student {
-    private Integer id;
+    @Id
+	private Integer id;
     private String name;
     private String course;
 
