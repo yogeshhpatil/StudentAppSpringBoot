@@ -11,7 +11,7 @@ import java.util.Collection;
 public class StudentService {
 
     @Autowired
-    @Qualifier("StudentDAOMysql")
+    @Qualifier("StudentDAOMongo")
     private StudentDAO studentDAO;
 
     public Collection<Student> getAllStudents(){
