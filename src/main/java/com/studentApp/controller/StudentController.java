@@ -18,9 +18,21 @@ public class StudentController {
         return studentService.getAllStudents();
     }
 
-    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/id={id}",method = RequestMethod.GET)
     public Student getStudentById(@PathVariable Integer id){
+        System.out.println("id endpoint");
         return studentService.getStudentById(id);
+    }
+
+    @RequestMapping(value = "/name={name}" , method = RequestMethod.GET)
+    public Student getStudentByName(@PathVariable String name){
+        System.out.println("name endpoint");
+        return studentService.getStudentByName(name);
+    }
+
+    @RequestMapping(value = "/course={course}", method = RequestMethod.GET)
+    public Collection<Student> getStudentByCourse(@PathVariable String course){
+        return studentService.getStudentByCourse(course);
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
@@ -32,10 +44,9 @@ public class StudentController {
     public void updateStudent(@RequestBody Student student){
         studentService.updateStudent(student);
     }
+
     @RequestMapping(method = RequestMethod.POST)
     public void addStudent(@RequestBody Student student){
         studentService.addStudent(student);
     }
-
-
 }

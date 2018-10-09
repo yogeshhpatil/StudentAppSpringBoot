@@ -9,6 +9,10 @@ public interface StudentDAO {
 
     Student getStudentById(Integer id);
 
+    Student getStudentByName(String name);
+
+    Collection<Student> getStudentByCourse(String course);
+
     void deleteStudentById(Integer id);
 
     void updateStudent(Student student);

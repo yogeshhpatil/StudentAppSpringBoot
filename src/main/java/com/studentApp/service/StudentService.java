@@ -11,7 +11,7 @@ import java.util.Collection;
 public class StudentService {
 
     @Autowired
-    @Qualifier("StudentDAOImpl")
+    @Qualifier("StudentDAOMysql")
     private StudentDAO studentDAO;
 
     public Collection<Student> getAllStudents(){
@@ -32,5 +32,13 @@ public class StudentService {
 
     public void addStudent(Student student) {
         studentDAO.addStudent(student);
+    }
+
+    public Student getStudentByName(String name){
+        return studentDAO.getStudentByName(name);
+    }
+
+    public Collection<Student> getStudentByCourse(String course){
+        return studentDAO.getStudentByCourse(course);
     }
 }
