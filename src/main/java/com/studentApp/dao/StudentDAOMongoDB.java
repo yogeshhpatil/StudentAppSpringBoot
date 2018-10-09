@@ -34,12 +34,23 @@ public class StudentDAOMongoDB implements StudentDAO {
     }
 
     @Override
+    public Student getStudentByName(String name) {
+        return studentMongoRepository.findByName(name);
+    }
+
+    @Override
+    public Collection<Student> getStudentByCourse(String course) {
+        return studentMongoRepository.findByCourseIgnoreCase(course);
+    }
+
+    @Override
     public void deleteStudentById(Integer id) {
         studentMongoRepository.delete(id);
     }
 
     @Override
     public void updateStudent(Student student) {
+
         studentMongoRepository.save(student);
     }
 

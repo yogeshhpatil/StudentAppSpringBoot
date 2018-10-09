@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface StudentMongoRepository extends MongoRepository<Student ,Integer> {
     Student findByName(String name);
-    List<Student> findByCourse(String course);
+    List<Student> findByCourseIgnoreCase(String course);
 }

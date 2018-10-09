@@ -35,6 +35,16 @@ public class StudentDAOMysql implements StudentDAO {
 	}
 
 	@Override
+	public Student getStudentByName(String name) {
+		return repository.findByName(name);
+	}
+
+	@Override
+	public Collection<Student> getStudentByCourse(String course) {
+		return repository.findByCourseIgnoreCase(course);
+	}
+
+	@Override
 	public void deleteStudentById(Integer id) {
 		repository.delete(id);
 	}
