@@ -3,6 +3,7 @@ package com.studentApp.dao;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,7 +32,11 @@ public class StudentDAOMysql implements StudentDAO {
 
 	@Override
 	public Student getStudentById(Integer id) {
-		return repository.findOne(id);
+//		return repository.findOne(id);
+		Optional<Student> byId = repository.findById(id);
+		if(byId.isPresent())
+			return byId.get();
+		return null;
 	}
 
 	@Override
@@ -46,7 +51,8 @@ public class StudentDAOMysql implements StudentDAO {
 
 	@Override
 	public void deleteStudentById(Integer id) {
-		repository.delete(id);
+//		repository.delete(id);
+		repository.deleteById(id);
 	}
 
 	@Override

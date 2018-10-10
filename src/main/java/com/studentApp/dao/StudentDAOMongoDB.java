@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 @Qualifier("StudentDAOMongo")
@@ -30,7 +31,12 @@ public class StudentDAOMongoDB implements StudentDAO {
 
     @Override
     public Student getStudentById(Integer id) {
-        return studentMongoRepository.findOne(id);
+//        return studentMongoRepository.findOne(id);
+        Optional<Student> byId = studentMongoRepository.findById(id);
+        if(byId.isPresent()){
+            return byId.get();
+        }
+        return null;
     }
 
     @Override
@@ -45,7 +51,8 @@ public class StudentDAOMongoDB implements StudentDAO {
 
     @Override
     public void deleteStudentById(Integer id) {
-        studentMongoRepository.delete(id);
+        studentMongoRepository.deleteById(id);
+//        studentMongoRepository.delete(id);
     }
 
     @Override

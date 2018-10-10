@@ -1,13 +1,14 @@
 package com.studentApp;
 
 import com.studentApp.entity.Student;
-import com.studentApp.repository.StudentMongoRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 @SpringBootApplication
+@EnableConfigServer
 public class StudentApp implements CommandLineRunner {
 
     MongoRepository repository;
