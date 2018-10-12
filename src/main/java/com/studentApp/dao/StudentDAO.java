@@ -3,15 +3,16 @@ package com.studentApp.dao;
 import com.studentApp.entity.Student;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface StudentDAO {
-    Collection<Student> getAllStudents();
+    List<Student> getAllStudents();
 
     Student getStudentById(Integer id);
 
-    Student getStudentByName(String name);
+    List<Student> getStudentByName(String name);
 
-    Collection<Student> getStudentByCourse(String course);
+    List<Student> getStudentByCourse(String course);
 
     void deleteStudentById(Integer id);
 

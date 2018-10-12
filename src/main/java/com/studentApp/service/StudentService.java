@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
+
 @Service
 public class StudentService {
 
@@ -14,7 +15,7 @@ public class StudentService {
     @Qualifier("StudentDAOMysql")
     private StudentDAO studentDAO;
 
-    public Collection<Student> getAllStudents(){
+    public List<Student> getAllStudents(){
         return studentDAO.getAllStudents();
     }
 
@@ -34,11 +35,11 @@ public class StudentService {
         studentDAO.addStudent(student);
     }
 
-    public Student getStudentByName(String name){
+    public List<Student> getStudentByName(String name){
         return studentDAO.getStudentByName(name);
     }
 
-    public Collection<Student> getStudentByCourse(String course){
+    public List<Student> getStudentByCourse(String course){
         return studentDAO.getStudentByCourse(course);
     }
 }

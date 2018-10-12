@@ -15,11 +15,14 @@ import java.util.Optional;
 @Qualifier("StudentDAOMongo")
 public class StudentDAOMongoDB implements StudentDAO {
 
-    @Autowired
     StudentMongoRepository studentMongoRepository;
 
+    public StudentDAOMongoDB(StudentMongoRepository studentMongoRepository) {
+        this.studentMongoRepository = studentMongoRepository;
+    }
+
     @Override
-    public Collection<Student> getAllStudents() {
+    public List<Student> getAllStudents() {
         Iterable<Student> all = studentMongoRepository.findAll();
         List<Student> students =new ArrayList<>();
         if(all.iterator().hasNext()){
@@ -31,7 +34,6 @@ public class StudentDAOMongoDB implements StudentDAO {
 
     @Override
     public Student getStudentById(Integer id) {
-//        return studentMongoRepository.findOne(id);
         Optional<Student> byId = studentMongoRepository.findById(id);
         if(byId.isPresent()){
             return byId.get();
@@ -40,12 +42,12 @@ public class StudentDAOMongoDB implements StudentDAO {
     }
 
     @Override
-    public Student getStudentByName(String name) {
+    public List<Student> getStudentByName(String name) {
         return studentMongoRepository.findByName(name);
     }
 
     @Override
-    public Collection<Student> getStudentByCourse(String course) {
+    public List<Student> getStudentByCourse(String course) {
         return studentMongoRepository.findByCourseIgnoreCase(course);
     }
 
@@ -57,7 +59,6 @@ public class StudentDAOMongoDB implements StudentDAO {
 
     @Override
     public void updateStudent(Student student) {
-
         studentMongoRepository.save(student);
     }
 

@@ -11,8 +11,7 @@ public class Student {
     private String name;
     private String course;
 
-    public Student() {
-    }
+    public Student() {}
 
     public Student(Integer id, String name, String course) {
         this.id = id;
@@ -42,6 +41,15 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", course='" + course + '\'' +
+                '}';
     }
 }
 
