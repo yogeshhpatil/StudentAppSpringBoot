@@ -1,33 +1,47 @@
-
 <html>
-  <head>
-    <title>Add Student </title>
-  </head>
-  <body>
-      <center>
-        <h1>Add Student</h1>
 
-        <font color="red">${errorMessage}</font>
+<head>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <form action="/ui/student" method="post">
-            <table>
-            <tr>
-                <td>Enter id:</td>
-                <td><input type="text" name="id" value="${student.id}"/></td>
-            </tr>
-            <tr>
-                <td>Enter name:</td>
-                <td><input type="text" name="name" value="${student.name}" /></td>
-            </tr>
-            <tr>
-                <td>Enter course:</td >
-                <td><input type="text" name="course" value="${student.course}"/></td>
-            </tr>
-            </table>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-            <input type="submit" value="Add Student" />
-      </form>
+    <title>Sample Application using Spring Boot</title>
+</head>
 
-      </center>
-  </body>
+<body>
+    <hr>
+
+    <center>
+        <div class="alert alert-danger" role="alert"> ${errorMessage} </div>
+    </center>
+
+    <hr>
+
+    <div class="container">
+        <form action="/ui/student" method="POST">
+            <div class="form-group">
+                <label for="lblId">Enter Id</label>
+                <input type="text" class="form-control" id="id" name="id" placeholder="Id" value="${student.id}">
+            </div>
+            <div class="form-group">
+                <label for="lblName">Enter Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="${student.name}">
+            </div>
+            <div class="form-group">
+                <label for="lblCourse">Enter Course</label>
+                <input type="text" class="form-control" id="course" name="course" placeholder="Course" value="${student.course}">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Student</button>
+            <a class="btn btn-outline-success" href="/ui/student" role="button">Home</a>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+</body>
+
 </html>

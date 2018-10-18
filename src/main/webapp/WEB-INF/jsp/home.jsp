@@ -1,36 +1,65 @@
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-<title>Student Web Application</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Sample Application using Spring Boot</title>
 </head>
+
 <body>
-    <h1 align="center">Student Application Spring Boot</h1>
+    <div class="container">
 
-    <center>
-        <font color="red">${errorMessage}</font>
+        <center>
+            <h1>Student Application</h1>
+            <hr>
+            <div class="alert alert-danger" role="alert"> ${errorMessage} </div>
+            <hr>
+            <a class="btn btn-outline-success" href="/ui/student/addstudent" role="button">Add Student</a>
+            <hr>
+        </center>
 
-        <h3> <a href="/ui/student/addstudent">Add Student</a> </h3>
-    </center>
+        <table class="table">
 
-    <table align="center" border=1>
-        <tr>
-            <td>StudentId</td>
-            <td>Name</td>
-            <td>Course</td>
-            <td></td>
-            <td></td>
-        </tr>
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">StudentId</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Course</th>
+                    <th scope="col">Operation</th>
+                    <th scope="col">Operation</th>
+                </tr>
+            </thead>
 
-        <c:forEach var="student" items="${studentList}">
-            <tr>
-                <td>${student.id}</td>
-                <td>${student.name}</td>
-                <td>${student.course}</td>
-                <td> <a href="/ui/student/edit/${student.id}">Edit</a> </td>
-                <td> <a href="/ui/student/delete/${student.id}">Delete</a> </td>
-            </tr>
-        </c:forEach>
-    </table>
+            <tbody>
+
+                <c:forEach var="student" items="${studentList}">
+                    <tr>
+                        <th scope="row">${student.id}</th>
+                        <td>${student.name}</td>
+                        <td>${student.course}</td>
+                        <td>
+                            <a class="btn btn-outline-success" href="/ui/student/edit/${student.id}" role="button">Update</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-outline-danger" href="/ui/student/delete/${student.id}" role="button">Delete</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+
+            </tbody>
+        </table>
+
+        <!-- Optional JavaScript -->
+
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </div>
 </body>
+
 </html>

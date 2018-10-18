@@ -18,11 +18,17 @@ import java.util.Map;
 @RequestMapping("/ui/student")
 public class StudentUIController {
 
+    RestTemplate restTemplate;
+
+    public StudentUIController(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
+
     @GetMapping
     public String show(Model model){
         String uri = "http://localhost:8080/rest/student/all";
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
 
         ResponseEntity<List<Student>> listResponseEntity = restTemplate.exchange(uri, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Student>>() {});
@@ -50,7 +56,7 @@ public class StudentUIController {
                                  @RequestParam String course, Model model){
         String uri = "http://localhost:8080/rest/student/id="+id;
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
 
         ResponseEntity<Student> exchange = restTemplate.exchange(uri, HttpMethod.GET, null,
                 Student.class);
@@ -82,7 +88,7 @@ public class StudentUIController {
     public String editDetails(@PathVariable String id,Model model){
         String uri = "http://localhost:8080/rest/student/id="+id;
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
 
         ResponseEntity<Student> exchange = restTemplate.exchange(uri, HttpMethod.GET, null,
                 Student.class);
@@ -104,9 +110,7 @@ public class StudentUIController {
 
         Student student = new Student(Integer.valueOf(id),name,course);
 
-        System.out.println("obj created"+student);
-
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
         restTemplate.put( uri, student, params);
 
         uri = "http://localhost:8080/rest/student/all";
@@ -123,7 +127,7 @@ public class StudentUIController {
     public String deletDetails(@PathVariable String id,Model model){
         String uri = "http://localhost:8080/rest/student/{id}";
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
 
         Map<String, String> params = new HashMap<String, String>();
 
@@ -146,7 +150,7 @@ public class StudentUIController {
 
         String uri = "http://localhost:8080/rest/student/id="+id;
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
         Student student = restTemplate.getForObject(uri, Student.class);
 
         if(student!=null){
