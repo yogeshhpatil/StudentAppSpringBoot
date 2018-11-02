@@ -1,6 +1,6 @@
 package com.studentApp.respository;
 
-import com.studentApp.repository.StudentMongoRepository;
+import com.studentApp.repository.StudentMySqlRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,13 +12,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class StudentMongoRepositoryTests {
+public class StudentMySqlRepositoryTests {
 
     @Autowired
-    StudentMongoRepository mongoRepository;
+    StudentMySqlRepository mySqlRepository;
 
     @Test
     public void testBeanCreation(){
-        Assert.assertNotEquals(null,mongoRepository);
+        Assert.assertNotEquals(null,mySqlRepository);
     }
 }

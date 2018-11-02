@@ -26,7 +26,7 @@ public class StudentUIController {
 
     @GetMapping
     public String show(Model model){
-        String uri = "http://localhost:8080/rest/student/all";
+        String uri = "http://localhost:8080/rest/students";
 
         restTemplate = new RestTemplate();
 
@@ -54,7 +54,7 @@ public class StudentUIController {
     @PostMapping
     public String addStudentToDb(@RequestParam String id,@RequestParam String name,
                                  @RequestParam String course, Model model){
-        String uri = "http://localhost:8080/rest/student/id="+id;
+        String uri = "http://localhost:8080/rest/students/"+id;
 
         restTemplate = new RestTemplate();
 
@@ -64,13 +64,13 @@ public class StudentUIController {
         Student student = new Student(Integer.valueOf(id),name,course);
 
         if(exchange.getBody()==null){
-            uri = "http://localhost:8080/rest/student";
+            uri = "http://localhost:8080/rest/students";
 
             Student result = restTemplate.postForObject( uri, student, Student.class);
 
             model.addAttribute("errorMessage",student.getId()+" is added");
 
-            uri = "http://localhost:8080/rest/student/all";
+            uri = "http://localhost:8080/rest/students";
             ResponseEntity<List<Student>> listResponseEntity = restTemplate.exchange(uri, HttpMethod.GET, null,
                     new ParameterizedTypeReference<List<Student>>() {});
 
@@ -86,7 +86,7 @@ public class StudentUIController {
 
     @GetMapping("/edit/{id}")
     public String editDetails(@PathVariable String id,Model model){
-        String uri = "http://localhost:8080/rest/student/id="+id;
+        String uri = "http://localhost:8080/rest/students/"+id;
 
         restTemplate = new RestTemplate();
 
@@ -103,7 +103,7 @@ public class StudentUIController {
             @RequestParam String course, Model model) {
 
 
-        String uri = "http://localhost:8080/rest/student/{id}";
+        String uri = "http://localhost:8080/rest/students/{id}";
 
         Map<String,String> params = new HashMap<String, String>();
         params.put("id", id);
@@ -113,7 +113,7 @@ public class StudentUIController {
         restTemplate = new RestTemplate();
         restTemplate.put( uri, student, params);
 
-        uri = "http://localhost:8080/rest/student/all";
+        uri = "http://localhost:8080/rest/students";
         ResponseEntity<List<Student>> listResponseEntity = restTemplate.exchange(uri, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Student>>() {});
 
@@ -125,7 +125,7 @@ public class StudentUIController {
 
     @GetMapping("/delete/{id}")
     public String deletDetails(@PathVariable String id,Model model){
-        String uri = "http://localhost:8080/rest/student/{id}";
+        String uri = "http://localhost:8080/rest/students/{id}";
 
         restTemplate = new RestTemplate();
 
@@ -135,7 +135,7 @@ public class StudentUIController {
 
         restTemplate.delete(uri,params);
 
-        uri = "http://localhost:8080/rest/student/all";
+        uri = "http://localhost:8080/rest/students";
         ResponseEntity<List<Student>> listResponseEntity = restTemplate.exchange(uri, HttpMethod.GET, null,
                 new ParameterizedTypeReference<List<Student>>() {});
 
@@ -145,10 +145,10 @@ public class StudentUIController {
         return "home";
     }
 
-    @GetMapping(value = "/id={id}")
+    /*@GetMapping(value = "/id={id}")
     public String getStudentById(@PathVariable int id, Model model) {
 
-        String uri = "http://localhost:8080/rest/student/id="+id;
+        String uri = "http://localhost:8080/rest/students/id="+id;
 
         restTemplate = new RestTemplate();
         Student student = restTemplate.getForObject(uri, Student.class);
@@ -161,6 +161,6 @@ public class StudentUIController {
             model.addAttribute("errorMessage","Not Record Found");
         }
         return "home";
-    }
+    }*/
 
 }

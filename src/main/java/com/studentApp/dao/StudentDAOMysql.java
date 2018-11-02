@@ -5,12 +5,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import com.studentApp.entity.Student;
 import com.studentApp.repository.StudentMySqlRepository;
 
-@Repository
+@Component
 @Qualifier("StudentDAOMysql")
 public class StudentDAOMysql implements StudentDAO {
 

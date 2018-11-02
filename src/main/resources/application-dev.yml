@@ -27,16 +27,15 @@ spring:
 
 #      ddl-auto: validate
 #      ddl-auto: update
-  data:
-    mongodb:
-      port: 27017
-      host: localhost
-      database: springDb
+#  data:
+#    mongodb:
+#      port: 27017
+#      host: localhost
+#      database: springDb
 
   mvc:
     view:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
-
 
 
