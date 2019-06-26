@@ -21,7 +21,7 @@
     <hr>
 
     <div class="container">
-        <form action="/ui/student/${student.id}" method="POST">
+        <form action="/ui/students/${student.id}" method="POST">
             <div class="form-group">
                 <label for="lblId">Enter Id</label>
                 <input type="text" class="form-control" id="id" name="id" placeholder="Id" value="${student.id}">
@@ -36,7 +36,7 @@
             </div>
 
             <button type="submit" class="btn btn-primary">Update Student</button>
-            <a class="btn btn-outline-success" href="/ui/student" role="button">Home</a>
+            <a class="btn btn-outline-success" href="/ui/students" role="button">Home</a>
 
         </form>
     </div>

@@ -15,11 +15,11 @@ public class StudentService {
     @Qualifier("StudentDAOMysql")
     private StudentDAO studentDAO;
 
-    public List<Student> getAllStudents(){
+    public List<Student> getAllStudents() {
         return studentDAO.getAllStudents();
     }
 
-    public Student getStudentById(Integer id){
+    public Student getStudentById(Integer id) {
         return this.studentDAO.getStudentById(id);
     }
 
@@ -27,7 +27,7 @@ public class StudentService {
         this.studentDAO.deleteStudentById(id);
     }
 
-    public void updateStudent(Student student){
+    public void updateStudent(Student student) {
         studentDAO.updateStudent(student);
     }
 
@@ -35,11 +35,11 @@ public class StudentService {
         studentDAO.addStudent(student);
     }
 
-    public List<Student> getStudentByName(String name){
+    public List<Student> getStudentByName(String name) {
         return studentDAO.getStudentByName(name);
     }
 
-    public List<Student> getStudentByCourse(String course){
+    public List<Student> getStudentByCourse(String course) {
         return studentDAO.getStudentByCourse(course);
     }
 }

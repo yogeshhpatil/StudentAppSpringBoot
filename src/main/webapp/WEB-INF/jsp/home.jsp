@@ -21,7 +21,7 @@
             <hr>
             <div class="alert alert-danger" role="alert"> ${errorMessage} </div>
             <hr>
-            <a class="btn btn-outline-success" href="/ui/student/addstudent" role="button">Add Student</a>
+            <a class="btn btn-outline-success" href="/ui/students/addstudent" role="button">Add Student</a>
             <hr>
         </center>
 
@@ -45,10 +45,10 @@
                         <td>${student.name}</td>
                         <td>${student.course}</td>
                         <td>
-                            <a class="btn btn-outline-success" href="/ui/student/edit/${student.id}" role="button">Update</a>
+                            <a class="btn btn-outline-success" href="/ui/students/edit/${student.id}" role="button">Update</a>
                         </td>
                         <td>
-                            <a class="btn btn-outline-danger" href="/ui/student/delete/${student.id}" role="button">Delete</a>
+                            <a class="btn btn-outline-danger" href="/ui/students/delete/${student.id}" role="button">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>
